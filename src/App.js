@@ -6,7 +6,7 @@ import Books from './pages/books';
 
 const App = () => {
 	return (
-		<>
+		<div className='App'>
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<Books />} />
@@ -14,7 +14,7 @@ const App = () => {
 					<Route path='/update' element={<Update />} />
 				</Routes>
 			</BrowserRouter>
-		</>
+		</div>
 	);
 };
 
