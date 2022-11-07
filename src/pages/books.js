@@ -33,6 +33,9 @@ const Books = () => {
 					<p>{book.price}</p>
 				</div>
 			))}
+			<button>
+				<Link to='/add'>Add a book</Link>
+			</button>
 		</>
 	);
 };

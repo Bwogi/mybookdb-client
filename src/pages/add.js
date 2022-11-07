@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Add = () => {
 	const [book, setBook] = useState({
@@ -8,12 +10,27 @@ const Add = () => {
 		cover: '',
 	});
 
-	const changeHandler = (e) => {
+	const navigate = useNavigate();
+
+	const handleChange = (e) => {
 		// whenever there is a change in the field, update or set the book variable with this new value
 		setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 	};
 
 	console.log(book);
+
+	const handleClick = async (e) => {
+		e.preventDefault();
+		// we will use axios to send the data
+		try {
+			// book is the json object to be sent
+			await axios.post('http://localhost:8800/books', book);
+			// redirect to home page
+			navigate('/');
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div>
@@ -21,27 +38,28 @@ const Add = () => {
 			<input
 				type='text'
 				placeholder='Book title...'
-				onChange={changeHandler}
+				onChange={handleChange}
 				name='title'
 			/>
 			<input
 				type='text'
 				placeholder='Book description...'
-				onChange={changeHandler}
+				onChange={handleChange}
 				name='desc'
 			/>
 			<input
 				type='number'
 				placeholder='Book price...'
-				onChange={changeHandler}
+				onChange={handleChange}
 				name='price'
 			/>
 			<input
 				type='text'
 				placeholder='Book cover...'
-				onChange={changeHandler}
+				onChange={handleChange}
 				name='cover'
 			/>
+			<button onClick={handleClick}>Add this book</button>
 		</div>
 	);
 };
