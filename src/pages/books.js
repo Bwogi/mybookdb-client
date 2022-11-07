@@ -7,8 +7,9 @@ const Books = () => {
 	useEffect(() => {
 		const fetchAllBooks = async () => {
 			try {
-				const data = await axios.get('http://localhost:8800/books');
-				console.log(data);
+				const res = await axios.get('http://localhost:8800/books');
+				console.log(res);
+				setBooks(res.data);
 			} catch (error) {
 				console.log(error);
 			}
@@ -16,7 +17,20 @@ const Books = () => {
 		fetchAllBooks();
 	}, []);
 
-	return <div>the book list page</div>;
+	return (
+		<>
+			<h1>The Book Shop</h1>
+			{books.map((book) => (
+				<div>
+					{/* book image */}
+					{book.cover && <img src={book.cover} alt='' />}
+					<h2>{book.title}</h2>
+					<p>{book.desc}</p>
+					<p>price</p>
+				</div>
+			))}
+		</>
+	);
 };
 
 export default Books;
