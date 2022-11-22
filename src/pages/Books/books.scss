@@ -1,0 +1,52 @@
+.books {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	.card {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 5px;
+		text-align: center;
+		width: 1200px;
+
+		.book {
+			border: 1px solid #ededed;
+			width: 300px;
+			padding: 15px;
+			img {
+				width: 300px;
+				background: cover;
+			}
+			h2 {
+				margin: 0;
+			}
+			p {
+				margin: 0;
+			}
+			.buttons {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				button {
+					border: 1px solid #ededed;
+					background-color: #fff;
+					padding: 10px 25px;
+					border-radius: 5px;
+					cursor: pointer;
+					margin-top: 10px;
+				}
+				.update {
+					color: green;
+				}
+				.delete {
+					color: red;
+				}
+			}
+		}
+	}
+}
